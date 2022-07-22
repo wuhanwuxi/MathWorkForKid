@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二十以内的加减法</title>
+</head>
+<body>
+
+<font face="courier new">
+<div id="problems" style="font-size:18px;font-weight:bold">
+</div>
+</font>
+
+<script>
+var problem_array = new Array();
+function getRandomInteger(min, max){
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function createARandomProblem(addOrSub){
+	sum = 21;
+	while(sum>20)
+	{
+		value1 = getRandomInteger(1, 20);
+		value2 = getRandomInteger(1, 20);
+		sum = value1+value2;
+	}
+	if(addOrSub){
+		return ((value1>=10)? "":"&nbsp;")+value1+" + "+((value2>=10)? "":"&nbsp;")+value2+" = ";
+	}else{
+		return ((sum>=10)? "":"&nbsp;")+sum+" - "+((value1>=10)? "":"&nbsp;")+value1+" = ";
+	}
+}
+
+window.onload=function(){
+	var tab ="<table border='0' >";
+	for(var i=0;i<20;i++){
+		tab += "<tr>";
+		for(var j=0;j<2;j++){
+			tab +="<td width=200>";
+			while(1){
+				var problem = createARandomProblem(j);
+				if(problem_array.indexOf(problem)==-1){
+					problem_array.push(problem);
+					tab +=problem;
+					break;
+				}
+			}
+			tab +="</td>";
+		}
+		tab +="</tr>"
+	}
+    tab +="</table>";
+    
+	var problems=document.getElementById("problems")
+    problems.innerHTML = tab;
+}
+</script>
+</body>
+</html>
