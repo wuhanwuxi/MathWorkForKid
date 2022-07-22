@@ -18,37 +18,37 @@ function getRandomInteger(min, max){
 }
 
 function createARandomProblem(){
-	sum = 11;
-	while(sum>10)
-	{
-		value1 = getRandomInteger(1, 10);
-		value2 = getRandomInteger(1, 10);
-		sum = value1+value2;
-	}
-	return value1+" + "+value2+" = ";
+    sum = 11;
+    while(sum>10)
+    {
+        value1 = getRandomInteger(1, 10);
+        value2 = getRandomInteger(1, 10);
+        sum = value1+value2;
+    }
+    return value1+" + "+value2+" = ";
 }
 
 window.onload=function(){
-	var tab ="<table border='0' >";
-	for(var i=0;i<20;i++){
-		tab += "<tr>";
-		for(var j=0;j<2;j++){
-			tab +="<td width=200>";
-			while(1){
-				var problem = createARandomProblem();
-				if(problem_array.indexOf(problem)==-1){
-					problem_array.push(problem);
-					tab +=problem;
-					break;
-				}
-			}
-			tab +="</td>";
-		}
-		tab +="</tr>"
-	}
+    var tab ="<table border='0' >";
+    for(var i=0;i<20;i++){
+        tab += "<tr>";
+        for(var j=0;j<2;j++){
+            tab +="<td width=200>";
+            while(1){
+                var problem = createARandomProblem();
+                if(problem_array.indexOf(problem)==-1){
+                    problem_array.push(problem);
+                    tab +=problem;
+                    break;
+                }
+            }
+            tab +="</td>";
+        }
+        tab +="</tr>"
+    }
     tab +="</table>";
     
-	var problems=document.getElementById("problems")
+    var problems=document.getElementById("problems")
     problems.innerHTML = tab;
 }
 </script>
