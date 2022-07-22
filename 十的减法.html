@@ -19,52 +19,52 @@ function getRandomInteger(min, max){
 }
 
 function createARandomProblem(addOrSub){
-	sum = 10;
-	value1 = getRandomInteger(1, 10);
-	value2 = sum-value1;
-	if(addOrSub){
-		return ""+sum+" - "+value1+" = ";
-	}else{
-		return value1+" + "+value2+" = ";
-	}
+    sum = 10;
+    value1 = getRandomInteger(1, 10);
+    value2 = sum-value1;
+    if(addOrSub){
+        return ""+sum+" - "+value1+" = ";
+    }else{
+        return value1+" + "+value2+" = ";
+    }
 }
 
 window.onload=function(){
-	var tab ="<table border='0' >";
-	for(var i=0;i<20;i++){
-		if(i%9 == 0){
-			problem_array1=new Array();
-			problem_array2=new Array();
-		}
-		tab += "<tr>";
-		for(var j=0;j<2;j++){
-			tab +="<td width=200>";
-			while(1){
-				//var problem=(j==0)?createARandomAddProblem():createARandomSubProblem();
-				var problem = createARandomProblem(1);
-				//if(problem_array.indexOf(problem)==-1){
-				if(j==0){
-					if(!problem_array1.includes(problem)){
-						problem_array1.push(problem);
-						tab +=problem;
-						break;
-					}
-				}else{
-					if(!problem_array2.includes(problem)){
-						problem_array2.push(problem);
-						tab +=problem;
-						break;
-					}
-				}
+    var tab ="<table border='0' >";
+    for(var i=0;i<20;i++){
+        if(i%9 == 0){
+            problem_array1=new Array();
+            problem_array2=new Array();
+        }
+        tab += "<tr>";
+        for(var j=0;j<2;j++){
+            tab +="<td width=200>";
+            while(1){
+                //var problem=(j==0)?createARandomAddProblem():createARandomSubProblem();
+                var problem = createARandomProblem(1);
+                //if(problem_array.indexOf(problem)==-1){
+                if(j==0){
+                    if(!problem_array1.includes(problem)){
+                        problem_array1.push(problem);
+                        tab +=problem;
+                        break;
+                    }
+                }else{
+                    if(!problem_array2.includes(problem)){
+                        problem_array2.push(problem);
+                        tab +=problem;
+                        break;
+                    }
+                }
 
-			}
-			tab +="</td>";
-		}
-		tab +="</tr>"
-	}
+            }
+            tab +="</td>";
+        }
+        tab +="</tr>"
+    }
     tab +="</table>";
     
-	var problems=document.getElementById("problems")
+    var problems=document.getElementById("problems")
     problems.innerHTML = tab;
 }
 </script>
