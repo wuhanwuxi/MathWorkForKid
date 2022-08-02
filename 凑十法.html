@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>凑十法</title>
+</head>
+<body>
+
+<font face="courier new">
+<div id="problems" style="font-size:18px;font-weight:bold">
+</div>
+</font>
+
+<script>
+var problem_array = new Array();
+function getRandomInteger(min, max){
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function createARandomProblem(){
+    sum = 0;
+    while(sum <= 10){
+        value1 = getRandomInteger(1, 10);
+        value2 = getRandomInteger(1, 10);
+        sum = value1+value2;
+		console.log("value1 is "+ value1 + ", value 2 is "+ value2 +", sum is "+ sum);
+    }
+	problem1 = "&nbsp;&nbsp;&nbsp;"+value1+" +&nbsp;&nbsp;"+value2+" = ";
+	problem1 += "<br/>";
+	if(value1 > value2){
+		problem1 += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;\\<br/>";
+		problem1 += "&nbsp;&nbsp"+value1+" +( )+( )=<br/><br/>";
+	} else {
+		problem1 += "&nbsp;&nbsp;\/&nbsp;\\<br/>";
+		problem1 += "( )+( )+"+value2+" =<br/><br/>";
+	}
+    return problem1;
+}
+
+window.onload=function(){
+    var tab ="<table border='0' >";
+    for(var i=0;i<12;i++){
+        tab += "<tr>";
+        for(var j=0;j<2;j++){
+            tab +="<td width=200>";
+            while(1){
+                var problem=createARandomProblem();
+                 if(!problem_array.includes(problem)){
+                    problem_array.push(problem);
+                    tab +=problem;
+                    break;
+                }
+            }
+            tab +="</td>";
+        }
+        tab +="</tr>"
+    }
+    tab +="</table>";
+    
+    var problems=document.getElementById("problems")
+    problems.innerHTML = tab;
+}
+</script>
+</body>
+</html>
